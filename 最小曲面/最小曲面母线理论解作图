@@ -1,0 +1,30 @@
+import elvet
+import numpy as np
+from matplotlib import pyplot as plt
+
+distance = 2
+domain = elvet.box((0, distance, 1000))
+x = domain.numpy()
+y = np.cosh(x-1)
+
+from matplotlib.pyplot import MultipleLocator
+# 从pyplot导入MultipleLocator类，这个类用于设置刻度间隔
+x_major_locator = MultipleLocator(0.2)
+# 把x轴的刻度间隔设置为0.1，并存在变量里
+y_major_locator = MultipleLocator(0.1)
+# 把y轴的刻度间隔设置为0.1，并存在变量里
+ax = plt.gca()
+# ax为两条坐标轴的实例
+ax.xaxis.set_major_locator(x_major_locator)
+ax.yaxis.set_major_locator(y_major_locator)
+
+plt.plot(x,y,label='Theoretical Solution')
+plt.legend(prop={'family': 'Times New Roman', 'size': 16})
+plt.ylabel('y', fontdict={'family': 'Times New Roman', 'size': 16})
+plt.xlabel('x', fontdict={'family': 'Times New Roman', 'size': 16})
+plt.title('Theoretical Solution', fontdict={'family': 'Times New Roman', 'size': 16})
+plt.yticks(fontproperties='Times New Roman', size=14)
+plt.xticks(fontproperties='Times New Roman', size=14)
+plt.grid()
+
+plt.show()
