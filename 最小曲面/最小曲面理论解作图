@@ -1,0 +1,29 @@
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+
+def draw_true():
+    from mpl_toolkits.mplot3d import Axes3D
+    # 设置画布大小
+    fig = plt.figure(figsize=(12, 8))
+    ax = Axes3D(fig)
+    # 由理论解构造数据点集合
+    xx = np.linspace(-1, 1, 1001, endpoint=True)
+    angle = np.linspace(0, math.pi * 2, 100)
+    yy = np.cosh(xx)
+    xx_mesh, angle_mesh = np.meshgrid(xx, angle)
+    yy_mesh = yy * np.cos(angle_mesh)
+    zz_mesh = yy * np.sin(angle_mesh)
+    # 绘制三维图像
+    ax.plot_surface(yy_mesh, zz_mesh, xx_mesh, cmap='rainbow')
+    plt.show()
+
+draw_true()
+
+
+
+
+
+
+
+
