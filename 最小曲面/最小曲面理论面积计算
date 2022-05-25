@@ -1,0 +1,21 @@
+import sympy
+from sympy import *
+
+# 思路：
+# 1、使用sympy得到理论解的表达式
+t = symbols('t')
+integ = integrate(sqrt(1+pow(t,2)) , (t,0,sinh(1)))
+print('积分部分表达式为',integ*2)
+theory = 4 * sympy.pi * integrate(sqrt(1+t*t) , (t,1,sinh(1)))
+print('最小面积理论解表达式为：',theory)
+print('-'*100)
+# 计算最小面积值
+print("代入上述表达式得：")
+from math import *
+x = sinh(1)
+integ = 1 + sqrt(1 + x**2)*x
+print('最小曲面面积值：',2*pi*integ)
+
+
+
+
